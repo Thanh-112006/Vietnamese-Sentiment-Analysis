@@ -1,0 +1,6 @@
+model_name: tfidf_lr
+use_segment: false
+max_len: null
+batch_size: null
+lr: null
+epochs: null

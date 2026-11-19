@@ -1,0 +1,13 @@
+seed: 42
+labels: [negative, neutral, positive]
+
+paths:
+  raw_data: data/raw/UIT-VSFC
+  processed_data: data/processed
+  noisy_data: data/noisy
+  experiments: experiments
+  reports: reports
+
+metrics:
+  primary: macro_f1
+  report: [macro_f1, accuracy, confusion_matrix]
