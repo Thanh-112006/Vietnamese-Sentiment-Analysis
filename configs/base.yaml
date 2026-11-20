@@ -1,6 +1,13 @@
 seed: 42
 labels: [negative, neutral, positive]
 
+preprocess:
+  lowercase: false
+
+noise:
+  seed: 42
+  teencode_rate: 0.8
+
 paths:
   raw_data: data/raw/UIT-VSFC
   processed_data: data/processed

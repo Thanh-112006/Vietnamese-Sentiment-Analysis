@@ -1,0 +1,81 @@
+{
+  "dataset": "UIT-VSFC",
+  "version": "1.0",
+  "source": "https://sites.google.com/uit.edu.vn/uit-nlp/datasets",
+  "labels": [
+    "negative",
+    "neutral",
+    "positive"
+  ],
+  "id_format": "{split}_{line_number:06d}",
+  "first_line_number": 1,
+  "preprocess": {
+    "unicode_normalization": "NFC",
+    "collapse_whitespace": true,
+    "lowercase": false,
+    "use_segment": false
+  },
+  "duplicate_check": [
+    "NFC",
+    "collapse_whitespace",
+    "casefold"
+  ],
+  "splits": {
+    "train": {
+      "num_samples": 11426,
+      "label_counts": {
+        "0": 5325,
+        "1": 458,
+        "2": 5643
+      },
+      "duplicate_rows": 1,
+      "source_sha256": {
+        "train/sents.txt": "5481dc1fa51f2fe72f22afd89b8aeb7f8945a126af7e66ac622e2ab0291130cb",
+        "train/sentiments.txt": "480480c3b9a6bc8bdf53339c721e93f8cc30472ac8f0bd21d4440ce1171aefac"
+      },
+      "processed_file": {
+        "path": "train.csv",
+        "sha256": "4bddbad45f967dcf17543e4e59c41f66e93c05c4fd284eb8a934d89a956dae6a"
+      }
+    },
+    "dev": {
+      "num_samples": 1583,
+      "label_counts": {
+        "0": 705,
+        "1": 73,
+        "2": 805
+      },
+      "duplicate_rows": 0,
+      "source_sha256": {
+        "dev/sents.txt": "fb7c3cc3173e1383edc03779883d91bb4d6110c8dd881612572a256878aa23b4",
+        "dev/sentiments.txt": "a9584a22c926a54c6042236380c9a65ab8c41467477f7a5d794fb2505c96a9c3"
+      },
+      "processed_file": {
+        "path": "dev.csv",
+        "sha256": "d8a615f038f0cb7bb75bef01e5952a7aa53d5ec07d528f32a5ad5da6dadf73a5"
+      }
+    },
+    "test": {
+      "num_samples": 3166,
+      "label_counts": {
+        "0": 1409,
+        "1": 167,
+        "2": 1590
+      },
+      "duplicate_rows": 0,
+      "source_sha256": {
+        "test/sents.txt": "75100e0559ecc0d7052870e2e7991391bfa7442bbaee91a6e271157c6fea343b",
+        "test/sentiments.txt": "0f04ebe3ada9655aff0a4c6eec27e5e7b8f552e26d3a6f06a35831e07e102f18"
+      },
+      "processed_file": {
+        "path": "test.csv",
+        "sha256": "57794afe7847e5e9167fc4ef90b8bf30ebdffe28b35ae1457be0a0e615cceabc"
+      }
+    }
+  },
+  "cross_split_overlaps": {
+    "train/dev": 0,
+    "train/test": 0,
+    "dev/test": 0
+  }
+}

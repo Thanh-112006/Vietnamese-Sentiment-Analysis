@@ -1,0 +1,4 @@
+data/processed/*.csv text eol=lf
+data/processed/*.json text eol=lf
+data/noisy/*.csv text eol=lf
+data/noisy/*.json text eol=lf

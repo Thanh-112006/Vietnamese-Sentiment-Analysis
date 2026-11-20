@@ -73,7 +73,7 @@ data/raw/UIT-VSFC/
 
 Mỗi dòng trong `sents.txt` ghép với dòng cùng vị trí trong `sentiments.txt`. Giữ thứ tự dòng và các tập `train`, `dev`, `test` đã phát hành. Số cặp câu–nhãn tương ứng là 11.426, 1.583 và 3.166. [Thẻ dữ liệu UIT-VSFC](https://huggingface.co/datasets/uitnlp/vietnamese_students_feedback#data-splits)
 
-[Loader UIT-VSFC](src/sentiment/data/loaders.py) sẽ tạo bản ghi `TextExample(id, text, label_id)`. ID dùng tên tập và số dòng gốc bắt đầu từ 1, chẳng hạn `test:000001`. Cùng một mẫu dùng chung ID trong các biến thể test và `predictions.csv` để có thể ghép dự đoán với nhãn gốc khi chấm điểm.
+[Loader UIT-VSFC](src/sentiment/data/loaders.py) sẽ tạo bản ghi `TextExample(id, text, label_id)`. ID có dạng `<split>_<số dòng gốc đủ 6 chữ số>` với số dòng bắt đầu từ 1, chẳng hạn `test_000001`. Cùng một mẫu dùng chung ID trong các biến thể test và `predictions.csv` để có thể ghép dự đoán với nhãn gốc khi chấm điểm.
 
 Mã nhãn trong tệp gốc khớp với thứ tự trong [cấu hình dự án](configs/base.yaml). [Định nghĩa nhãn UIT-VSFC](https://huggingface.co/datasets/uitnlp/vietnamese_students_feedback/blob/main/vietnamese_students_feedback.py)
 
@@ -82,3 +82,32 @@ Mã nhãn trong tệp gốc khớp với thứ tự trong [cấu hình dự án]
 | `0` | `negative` | Tiêu cực |
 | `1` | `neutral` | Trung tính |
 | `2` | `positive` | Tích cực |
+
+### Dữ liệu có sẵn và cách tái tạo
+
+- `data/processed/` chứa ba split gốc `train`, `dev` và `test` đã làm sạch.
+- `data/noisy/` chứa bốn điều kiện của tập test gồm `clean`, `no_accent`, `teencode` và `mixed`.
+
+Các CSV trong hai thư mục đều **chưa tách từ**. Mỗi thư mục có một `manifest.json` ghi mã SHA-256 của các CSV tương ứng.
+
+Để tạo lại cả hai bộ dữ liệu, tải UIT-VSFC về `data/raw/UIT-VSFC`, kích hoạt `.venv` và chạy hai lệnh sau từ thư mục gốc của repo.
+
+```powershell
+python scripts/prepare_data.py --input data/raw/UIT-VSFC --output data/processed
+python scripts/make_noisy_testset.py --input data/processed/test.csv --output data/noisy
+```
+
+## 3. Chạy kiểm thử
+
+Từ thư mục gốc repo, kích hoạt `.venv` rồi chạy lệnh sau. Các test loader và làm sạch tự tạo dữ liệu mẫu.
+
+```powershell
+python -m pytest -q
+```
+
+Nếu pytest báo `PermissionError: [WinError 5]` khi khởi tạo `tmp_path`, dùng một thư mục tạm mới bên trong `.venv` cho lượt chạy đó.
+
+```powershell
+$pytestTemp = Join-Path $PWD.Path ".venv\pytest-$([guid]::NewGuid().ToString('N'))"
+python -m pytest -q --basetemp "$pytestTemp"
+```
