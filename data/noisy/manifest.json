@@ -1,0 +1,43 @@
+{
+  "source": {
+    "path": "test.csv",
+    "sha256": "57794afe7847e5e9167fc4ef90b8bf30ebdffe28b35ae1457be0a0e615cceabc",
+    "num_samples": 3166
+  },
+  "noise": {
+    "seed": 42,
+    "teencode_rate": 0.8,
+    "teencode_dictionary_version": "1",
+    "teencode_dictionary_sha256": "8ef415efee31a095c543cc6a16e95cf10ef24ad56b38df3dfe9b222816aeff96"
+  },
+  "variants": {
+    "clean": {
+      "path": "clean.csv",
+      "sha256": "96b4f15052322135ab3ff51a4e6e7f69e6a610e939c12e46a2b564b8ed017d24",
+      "num_samples": 3166,
+      "changed_rows": 0,
+      "changed_rate": 0.0
+    },
+    "no_accent": {
+      "path": "no_accent.csv",
+      "sha256": "1d9d4dbfadb1458afe05851c48660f6882529e2e1011bd059abe7ee6c2e1f519",
+      "num_samples": 3166,
+      "changed_rows": 3162,
+      "changed_rate": 0.9987365761212887
+    },
+    "teencode": {
+      "path": "teencode.csv",
+      "sha256": "2ec4fa4ab780a12a59521c64dc3ae153cfc13207336095aff63fa3184fe17dea",
+      "num_samples": 3166,
+      "changed_rows": 1862,
+      "changed_rate": 0.5881238155401137
+    },
+    "mixed": {
+      "path": "mixed.csv",
+      "sha256": "a5dbd5f042489f9139ac5d8d918c2ddd7e87ff04ac718e524e41513e0dc842fa",
+      "num_samples": 3166,
+      "changed_rows": 3162,
+      "changed_rate": 0.9987365761212887
+    }
+  }
+}
