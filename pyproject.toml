@@ -27,7 +27,7 @@ neural = [
     "accelerate>=0.29",
 ]
 embeddings = ["fasttext-wheel>=0.9.2"]
-segment = ["underthesea>=6.8"]
+segment = ["underthesea==9.5.0"]
 demo = ["streamlit>=1.35"]
 dev = ["pytest>=8.0", "ipykernel>=6.29"]
 

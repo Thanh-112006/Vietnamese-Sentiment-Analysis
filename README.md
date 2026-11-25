@@ -97,6 +97,10 @@ python scripts/prepare_data.py --input data/raw/UIT-VSFC --output data/processed
 python scripts/make_noisy_testset.py --input data/processed/test.csv --output data/noisy
 ```
 
+### Tách từ trước khi đưa vào mô hình
+
+Runner lấy cột `text` từ CSV của tập hoặc điều kiện test đang dùng. Cấu hình mô hình điều khiển bước này bằng `use_segment`. Giá trị `false` chuyển nguyên câu vào mô hình. Với `true`, runner tách từ một lần cho mỗi câu bằng underthesea 9.5.0 trước khi gọi mô hình. Tùy chọn `format="text"` nối các tiếng trong từ ghép bằng dấu gạch dưới và `use_token_normalize=False` tắt chuẩn hóa token. Cả bốn điều kiện test dùng cùng cấu hình tách từ của lần huấn luyện.
+
 ## 3. Chạy kiểm thử
 
 Từ thư mục gốc repo, kích hoạt `.venv` rồi chạy lệnh sau. Các test loader và làm sạch tự tạo dữ liệu mẫu.

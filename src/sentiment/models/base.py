@@ -3,7 +3,10 @@ from collections.abc import Sequence
 
 
 class BaseSentimentModel(ABC):
-    """Giao diện chung cho các mô hình phân loại cảm xúc."""
+    """fit và predict_proba nhận văn bản runner đã chuẩn bị theo use_segment.
+
+    Mô hình truyền trực tiếp các chuỗi này vào vectorizer hoặc tokenizer của mình.
+    """
 
     @abstractmethod
     def fit(

@@ -1,4 +1,5 @@
 seed: 42
+use_segment: false
 labels: [negative, neutral, positive]
 
 preprocess:
